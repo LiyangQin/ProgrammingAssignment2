@@ -4,7 +4,6 @@
 ## 1/ set the value of the matrix 2/ get the value of the matrix
 ## 3/ set the inverse 4/ get the inverse
 makeCacheMatrix <- function(x = matrix()) {
-
 inv <- NULL
 set <- function(y) {
     x <<- y
