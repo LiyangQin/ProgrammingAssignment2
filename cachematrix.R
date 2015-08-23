@@ -12,24 +12,24 @@ set <- function(y) {
     inv <<- NULL
 }
 get <- function() x
-setinv <- function(inverse) inv <<- inverse
+setinv <- function(solve) inv <<- solve
 getinv <- function() inv
-list(set = set, get = get,
+list (set = set, get = get,
      setinv = setinv,
      getinv = getinv)
 
-## This function creates a special "matrix" object 
-## that can cache its inverse.
+## return the inverse of a cached Matrix object
 
 cacheSolve <- function(x, ...) {
     inv <- x$getinv()
-    if(!is.nall(inv)){
+    ## check whether the inverse has been calculated
+    if(!is.null(inv)){
         message("Getting cached data...")
         return(inv)
     }
+    ## Computing the inverse of a square matrix
     data <- x$get()
-    inv <- solve(data, ...)
-    ## Computing the inverse of a square matrix 
+    invFunc <- solve(data, ...)
     ## can be done with the solve function in R.
     x$setinv(inv)
     inv
