@@ -12,7 +12,7 @@ set <- function(y) {
     inv <<- NULL
 }
 get <- function() x
-setinv <- function(solve) inv <<- solve
+setinv <- function(inverse) inv <<- inverse
 getinv <- function() inv
 list (set = set, get = get,
      setinv = setinv,
@@ -29,7 +29,7 @@ cacheSolve <- function(x, ...) {
     }
     ## Computing the inverse of a square matrix
     data <- x$get()
-    invFunc <- solve(data, ...)
+    inv <- solve(data, ...)
     ## can be done with the solve function in R.
     x$setinv(inv)
     inv
